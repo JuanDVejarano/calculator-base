@@ -10,10 +10,14 @@ class index{
         boolean flagBase = true;
         boolean flagOption = true;
 
+        //instacias -> objetos
+        ClassConvert instaciaCovert = new ClassConvert();
         Scanner catchConsol = new Scanner(System.in);
 
         while (flagOption) { // Ciclo para asegurar quie elija un valor correcto
             
+            System.out.println(3 * 10);
+
             //opciones a operar
             System.out.println("Ingrese la operacion que decea realizar");
             System.out.println("1- Convertir de una base a decimal");
@@ -42,7 +46,7 @@ class index{
         }
         
         
-        
+        // switch segun la operacion elegida
         switch (option) {
             case 1:
                 String sms = "Ingrese el valor";
@@ -54,6 +58,11 @@ class index{
                     flag = validationBase(base, value1);
                     sms = "El valor no pertenece a la base Ingrese un valor valido";
                 }
+                
+                instaciaCovert.vector = intToVector(value1);
+                instaciaCovert.base = base;
+                System.out.println(instaciaCovert.numToDEcimal());
+                
 
                 break;
         
@@ -82,11 +91,12 @@ class index{
         Vector<Integer> vector = new Vector<>();
         Vector<Integer> vectorAux = new Vector<>();
         
-        while (value > 0) { // guardar digito por digito en el vector
+        while (value > 0) { // guardar digito por digito en el vector auxiliar
             vectorAux.add(value % 10);
             value = value / 10;
         }
         
+        // se organizan los digitos del vector en orden
         for (int i = (vectorAux.size() -1); -1 < i; i--) {
             vector.add(vectorAux.get(i));
         }
