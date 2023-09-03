@@ -3,6 +3,8 @@ import java.util.Vector;
 
 class index{
     public static void main(String[] args) {
+
+        //#region variables
         int option = 0;
         int base = 10;
         int value1 = 0;
@@ -14,7 +16,9 @@ class index{
         //instacias -> objetos
         ClassConvert instaciaCovert = new ClassConvert();
         Scanner catchConsol = new Scanner(System.in);
+        //#endregion
 
+        //#region opciones a operar
         while (flagOption) { // Ciclo para asegurar quie elija un valor correcto
             
             System.out.println(3 * 10);
@@ -32,8 +36,9 @@ class index{
                 flagOption = false;
             }
         }
+        //#endregion
 
-        // Mensajes segun la opcion
+        //#region Mensajes segun la opcion 
         switch (option) {
             case 1:
                 message = "Ingrese la base que quiere convertir a decimal";
@@ -47,7 +52,9 @@ class index{
                 message = "Opcion no valida";
                 break;
         }
+        //#endregion
 
+        //#region ingreso de base
         while (flagBase) { // Ciclo para asegurar quie elija un valor correcto
 
             // Seleccionar Base a operar
@@ -60,8 +67,9 @@ class index{
                 flagBase = false;
             }
         }
+        //#endregion
         
-        
+        //#region operaciones
         // switch segun la operacion elegida
         switch (option) {
             case 1:
@@ -104,8 +112,10 @@ class index{
                 break;
         }
 
+        //#endregion
     }
 
+    //#region Metodos
     //Metodo para verificar si el numero paretenece a la base
     static boolean validationBase(int base, int value) 
     {
@@ -136,4 +146,5 @@ class index{
         }
         return vector;
     }
+    //#endregion
 }

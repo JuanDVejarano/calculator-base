@@ -2,10 +2,13 @@ import java.util.Vector;
 
 public class ClassConvert {
 
+    //#region variables
     int base;
     Vector<Integer> vector = new Vector<>();
     int value;
+    //#endregion
 
+    //#region metodos
     public int numToDEcimal(){
         Vector<Integer> itemSuma = new Vector<>();
         int total = 0;
@@ -47,4 +50,5 @@ public class ClassConvert {
 
         return Integer.parseInt(total);
     }
+    //#endregion
 }
