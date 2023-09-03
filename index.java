@@ -59,11 +59,17 @@ class index{
                     sms = "El valor no pertenece a la base Ingrese un valor valido";
                 }
                 
+                // Manejo del objeto
                 instaciaCovert.vector = intToVector(value1);
                 instaciaCovert.base = base;
                 System.out.println(instaciaCovert.numToDEcimal());
-                
 
+                break;
+
+            case 2:
+
+                
+                
                 break;
         
             default:
