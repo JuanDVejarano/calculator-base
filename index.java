@@ -68,11 +68,17 @@ class index{
     {
         Vector<Integer> vector = new Vector<>();
         vector = intToVector(value);
-        System.out.println(vector);
+        for (Integer ValueVector : vector) {
+            if (ValueVector >= base || ValueVector < 0){
+                return true;
+            }
+        }
         return false;
     }
 
+    // metodo pone cada valor en un arreglo
     static Vector<Integer> intToVector(int value){ // metodo para guardar valores del numero en un vector
+
         Vector<Integer> vector = new Vector<>();
         Vector<Integer> vectorAux = new Vector<>();
         
@@ -80,14 +86,10 @@ class index{
             vectorAux.add(value % 10);
             value = value / 10;
         }
-
-        System.out.println(vectorAux);
-
-        for (int i = vectorAux.size(); i > vectorAux.size(); i--) { // re organizar vector
+        
+        for (int i = (vectorAux.size() -1); -1 < i; i--) {
             vector.add(vectorAux.get(i));
         }
-
         return vector;
-
     }
 }
