@@ -26,15 +26,25 @@ public class ClassConvert {
 
     public int decimalToNum(){
         Vector<Integer> itemTotalAux = new Vector<>();
+        Vector<Integer> itemTotal = new Vector<>();
 
-        int residuo = 1;
+        int residuo = 0;
         int valAux = value;
-        while (residuo == 0){
+        while (valAux != 0){
             residuo = valAux % base;
             valAux = valAux / base;
             itemTotalAux.add(residuo);
         }
 
-        return 0;
+        for (int i = (itemTotalAux.size() -1); -1 < i; i--) {
+            itemTotal.add(itemTotalAux.get(i));
+        }
+
+        String total = "";
+        for (Integer sumCont : itemTotal) {
+            total = total + String.valueOf(sumCont);
+        }
+
+        return Integer.parseInt(total);
     }
 }

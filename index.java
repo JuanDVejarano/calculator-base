@@ -9,6 +9,7 @@ class index{
         int value2 = 0;
         boolean flagBase = true;
         boolean flagOption = true;
+        String message;
 
         //instacias -> objetos
         ClassConvert instaciaCovert = new ClassConvert();
@@ -32,10 +33,25 @@ class index{
             }
         }
 
+        // Mensajes segun la opcion
+        switch (option) {
+            case 1:
+                message = "Ingrese la base que quiere convertir a decimal";
+                break;
+
+            case 2:
+                message = "Ingrese la base a la que quiere convertir el numero decimal";
+                break;
+
+            default:
+                message = "Opcion no valida";
+                break;
+        }
+
         while (flagBase) { // Ciclo para asegurar quie elija un valor correcto
 
             // Seleccionar Base a operar
-            System.out.println("Ingrese la base sobre la que quiere trabajar");
+            System.out.println(message);
             System.out.println("minimo base 2");
             System.out.println("maximo base 10");
             base = catchConsol.nextInt(); // captura valor de la base
@@ -62,13 +78,25 @@ class index{
                 // Manejo del objeto
                 instaciaCovert.vector = intToVector(value1);
                 instaciaCovert.base = base;
-                System.out.println(instaciaCovert.numToDEcimal());
-
-                break;
-
-            case 2:
-
+                System.out.println("El valor en decimal es " + instaciaCovert.numToDEcimal());
                 
+                break;
+                
+                case 2:
+                
+                boolean flag2 = true;
+                String sms2 = "Ingrese el valor";
+                
+                while (flag2){
+                    System.out.println(sms2);
+                    value1 = catchConsol.nextInt();
+                    flag2 = validationBase(10, value1);
+                    sms2 = "El valor no pertenece a la base Ingrese un valor valido";
+                }
+
+                instaciaCovert.value = value1;
+                instaciaCovert.base = base;
+                System.out.println("El valor en base " + instaciaCovert.base + " es " + instaciaCovert.decimalToNum());
                 
                 break;
         
@@ -84,7 +112,7 @@ class index{
         Vector<Integer> vector = new Vector<>();
         vector = intToVector(value);
         for (Integer ValueVector : vector) {
-            if (ValueVector >= base || ValueVector < 0){
+            if (ValueVector >= (base - 1) || ValueVector < 0){
                 return true;
             }
         }
