@@ -112,7 +112,7 @@ class index{
         Vector<Integer> vector = new Vector<>();
         vector = intToVector(value);
         for (Integer ValueVector : vector) {
-            if (ValueVector >= (base - 1) || ValueVector < 0){
+            if (ValueVector >= base || ValueVector < 0){
                 return true;
             }
         }
