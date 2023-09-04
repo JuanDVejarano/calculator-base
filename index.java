@@ -15,6 +15,7 @@ class index{
 
         //instacias -> objetos
         ClassConvert instaciaCovert = new ClassConvert();
+        ClassOperator instanciaOperar = new ClassOperator();
         Scanner catchConsol = new Scanner(System.in);
         //#endregion
 
@@ -90,7 +91,7 @@ class index{
                 
                 break;
                 
-                case 2:
+            case 2:
                 
                 boolean flag2 = true;
                 String sms2 = "Ingrese el valor";
@@ -106,6 +107,19 @@ class index{
                 instaciaCovert.base = base;
                 System.out.println("El valor en base " + instaciaCovert.base + " es " + instaciaCovert.decimalToNum());
                 
+                break;
+
+            case 3:
+                
+                System.out.println("Imgrese el primer valor a sumar");
+                value1 = catchConsol.nextInt();
+                System.out.println("Imgrese el segundo valor a sumar");
+                value2 = catchConsol.nextInt();
+
+                instanciaOperar.num1 = intToVector(value1);
+                instanciaOperar.num2 = intToVector(value2);
+                System.out.println("El resultado de la suma es " + instanciaOperar.suma());
+
                 break;
         
             default:

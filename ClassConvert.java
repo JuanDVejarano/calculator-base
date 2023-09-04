@@ -39,7 +39,7 @@ public class ClassConvert {
             itemTotalAux.add(residuo);
         }
 
-        for (int i = (itemTotalAux.size() -1); -1 < i; i--) {
+        for (int i = (itemTotalAux.size() -1); -1 < i; i--) { // Dar la vuelta al vector para el numero resultante
             itemTotal.add(itemTotalAux.get(i));
         }
 
