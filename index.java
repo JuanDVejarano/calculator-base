@@ -29,9 +29,9 @@ class index{
             /*System.out.println("3- Suma entre 2 numeros de la misma base");
             System.out.println("4- Resta entre 2 numeros de la misma base");
             System.out.println("5- Multiplicacion entre 2 numeros de la misma base");
-            System.out.println("6- Division entre 2 numeros de la misma base");
-            option = catchConsol.nextInt(); // captura de opcion de operacion*/
-            if (option >= 1 && option <= 2) { // validacion para que seleccion una opcion entre 1 y 6
+            System.out.println("6- Division entre 2 numeros de la misma base");*/
+            option = catchConsol.nextInt(); // captura de opcion de operacion
+            if (option >= 1 && option <= 6) { // validacion para que seleccion una opcion entre 1 y 6
                 flagOption = false;
             }
         }
