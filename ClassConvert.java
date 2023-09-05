@@ -27,7 +27,7 @@ public class ClassConvert {
 
     } 
 
-    public int decimalToNum(){
+    public String decimalToNum(){
         Vector<Integer> itemTotalAux = new Vector<>();
         Vector<Integer> itemTotal = new Vector<>();
 
@@ -48,7 +48,8 @@ public class ClassConvert {
             total = total + String.valueOf(sumCont);
         }
 
-        return Integer.parseInt(total);
+        //return Integer.parseInt(total);
+        return total;
     }
     //#endregion
 }
