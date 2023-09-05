@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 class index{
+    // Los datos de los integrantes esta en el archivio RADME.md
     public static void main(String[] args) {
 
         //#region variables
