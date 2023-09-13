@@ -8,8 +8,10 @@ class index{
         //#region variables
         int option = 0;
         int base = 10;
-        int value1 = 0;
-        int value2 = 0;
+        String catchValue1 = "";
+        String catchValue2;
+        Vector<Integer> value1 = new Vector<>();
+        Vector<Integer> value2 = new Vector<>();
         boolean flagBase = true;
         boolean flagOption = true;
         String message;
@@ -27,10 +29,10 @@ class index{
             System.out.println("Ingrese la operacion que decea realizar");
             System.out.println("1- Convertir de una base a decimal");
             System.out.println("2- Convertir de decimal a una base");
-            /*System.out.println("3- Suma entre 2 numeros de la misma base");
+            System.out.println("3- Suma entre 2 numeros de la misma base");
             System.out.println("4- Resta entre 2 numeros de la misma base");
             System.out.println("5- Multiplicacion entre 2 numeros de la misma base");
-            System.out.println("6- Division entre 2 numeros de la misma base");*/
+            System.out.println("6- Division entre 2 numeros de la misma base");
             option = catchConsol.nextInt(); // captura de opcion de operacion
             if (option >= 1 && option <= 6) { // validacion para que seleccion una opcion entre 1 y 6
                 flagOption = false;
@@ -78,13 +80,14 @@ class index{
                 
                 while (flag){
                     System.out.println(sms);
-                    value1 = catchConsol.nextInt();
+                    catchValue1 = catchConsol.next();
+                    value1 = convertValueArray(catchValue1);
                     flag = validationBase(base, value1);
                     sms = "El valor no pertenece a la base Ingrese un valor valido";
                 }
                 
                 // Manejo del objeto
-                instaciaCovert.vector = intToVector(value1);
+                instaciaCovert.vector = value1; //intToVector(value1);
                 instaciaCovert.base = base;
                 System.out.println("El valor en decimal es " + instaciaCovert.numToDEcimal());
                 
@@ -97,12 +100,12 @@ class index{
                 
                 while (flag2){
                     System.out.println(sms2);
-                    value1 = catchConsol.nextInt();
+                    catchValue1 = catchConsol.next();
                     flag2 = validationBase(10, value1);
                     sms2 = "El valor no pertenece a la base Ingrese un valor valido";
                 }
 
-                instaciaCovert.value = value1;
+                instaciaCovert.value = Long.parseLong(catchValue1);
                 instaciaCovert.base = base;
                 String totalPrint = instaciaCovert.decimalToNum();
                 System.out.println("El valor en base " + instaciaCovert.base + " es ");
@@ -113,12 +116,12 @@ class index{
             case 3:
                 
                 System.out.println("Imgrese el primer valor a sumar");
-                value1 = catchConsol.nextInt();
+                catchValue1 = catchConsol.next();
                 System.out.println("Imgrese el segundo valor a sumar");
-                value2 = catchConsol.nextInt();
+                //value2 = catchConsol.nextInt();
 
-                instanciaOperar.num1 = intToVector(value1);
-                instanciaOperar.num2 = intToVector(value2);
+                //instanciaOperar.num1 = intToVector(value1);
+                //instanciaOperar.num2 = intToVector(value2);
                 System.out.println("El resultado de la suma es " + instanciaOperar.suma());
 
                 break;
@@ -131,12 +134,11 @@ class index{
     }
 
     //#region Metodos
+    
     //Metodo para verificar si el numero paretenece a la base
-    static boolean validationBase(int base, int value) 
+    static boolean validationBase(int base, Vector<Integer> vectorParam) 
     {
-        Vector<Integer> vector = new Vector<>();
-        vector = intToVector(value);
-        for (Integer ValueVector : vector) {
+        for (Integer ValueVector : vectorParam) {
             if (ValueVector >= base || ValueVector < 0){
                 return true;
             }
@@ -144,8 +146,18 @@ class index{
         return false;
     }
 
+    //Metodo pasar de String a Vector
+    static Vector<Integer> convertValueArray(String valueString){
+        Vector<Integer> newVector = new Vector<Integer>();
+        for (int i = 0; i < valueString.length(); i++) {
+            String charVal = String.valueOf(valueString.charAt(i));
+            newVector.add(Integer.parseInt(charVal));
+        }
+        return newVector;
+    }
+
     // metodo pone cada valor en un arreglo
-    static Vector<Integer> intToVector(int value){ // metodo para guardar valores del numero en un vector
+    /*static Vector<Integer> intToVector(int value){ // metodo para guardar valores del numero en un vector
 
         Vector<Integer> vector = new Vector<>();
         Vector<Integer> vectorAux = new Vector<>();
@@ -160,6 +172,6 @@ class index{
             vector.add(vectorAux.get(i));
         }
         return vector;
-    }
+    }*/
     //#endregion
 }

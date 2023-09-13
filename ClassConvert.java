@@ -5,13 +5,13 @@ public class ClassConvert {
     //#region variables
     int base;
     Vector<Integer> vector = new Vector<>();
-    int value;
+    Long value;
     //#endregion
 
     //#region metodos
-    public int numToDEcimal(){
+    public long numToDEcimal(){
         Vector<Integer> itemSuma = new Vector<>();
-        int total = 0;
+        long total = 0;
         int potencia = 0;
         for (int i = (vector.size() -1); -1 < i; i--) {
             double valor = vector.get(i) * Math.pow(base, potencia);
@@ -19,7 +19,7 @@ public class ClassConvert {
             potencia ++;
         }
 
-        for (Integer value : itemSuma) {
+        for (long value : itemSuma) {
             total = total + value;
         }
 
@@ -32,9 +32,9 @@ public class ClassConvert {
         Vector<Integer> itemTotal = new Vector<>();
 
         int residuo = 0;
-        int valAux = value;
+        Long valAux = value;
         while (valAux != 0){
-            residuo = valAux % base;
+            residuo =  valAux.intValue() % base;
             valAux = valAux / base;
             itemTotalAux.add(residuo);
         }
