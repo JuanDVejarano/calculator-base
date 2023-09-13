@@ -50,6 +50,10 @@ class index{
                 message = "Ingrese la base a la que quiere convertir el numero decimal";
                 break;
 
+            case 3:
+                message = "Ingrese la base sobre la que quiere operar";
+                break;
+
             default:
                 message = "Opcion no valida";
                 break;
@@ -74,7 +78,7 @@ class index{
         //#region operaciones
         // switch segun la operacion elegida
         switch (option) {
-            case 1:
+            case 1: // Caso de una base a decimal
                 String sms = "Ingrese el valor";
                 boolean flag = true;
                 
@@ -93,7 +97,7 @@ class index{
                 
                 break;
                 
-            case 2:
+            case 2: // Caso de decimal a una base
                 
                 boolean flag2 = true;
                 String sms2 = "Ingrese el valor";
@@ -101,6 +105,7 @@ class index{
                 while (flag2){
                     System.out.println(sms2);
                     catchValue1 = catchConsol.next();
+                    value1 = convertValueArray(catchValue1);
                     flag2 = validationBase(10, value1);
                     sms2 = "El valor no pertenece a la base Ingrese un valor valido";
                 }
@@ -113,16 +118,39 @@ class index{
                 
                 break;
 
-            case 3:
-                
-                System.out.println("Imgrese el primer valor a sumar");
-                catchValue1 = catchConsol.next();
-                System.out.println("Imgrese el segundo valor a sumar");
-                //value2 = catchConsol.nextInt();
+            case 3: // Caso para sumar 2 numeros
 
-                //instanciaOperar.num1 = intToVector(value1);
-                //instanciaOperar.num2 = intToVector(value2);
-                System.out.println("El resultado de la suma es " + instanciaOperar.suma());
+                boolean flag31 = true;
+                String sms31 = "Ingrese el primer valor";
+                
+                while (flag31){
+                    System.out.println(sms31);
+                    catchValue1 = catchConsol.next();
+                    value1 = convertValueArray(catchValue1);
+                    flag31 = validationBase(base, value1);
+                    sms31 = "El valor no pertenece a la base Ingrese un valor valido";
+                }
+
+                flag31 = true;
+                sms31 = "Ingrese el segundo valor";
+                
+                while (flag31){
+                    System.out.println(sms31);
+                    catchValue2 = catchConsol.next();
+                    value2 = convertValueArray(catchValue2);
+                    flag31 = validationBase(base, value2);
+                    sms31 = "El valor no pertenece a la base Ingrese un valor valido";
+                }
+
+                instanciaOperar.num1 = value1;
+                instanciaOperar.num2 = value2;
+                instanciaOperar.base = base;
+                Vector<Integer> vectorSuma = instanciaOperar.suma();
+                String resultSuma = "";
+                for (Integer value : vectorSuma) {
+                    resultSuma = resultSuma + value;
+                }
+                System.out.println("El resultado de la suma es " + resultSuma);
 
                 break;
         
