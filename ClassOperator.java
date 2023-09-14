@@ -4,7 +4,6 @@ public class ClassOperator {
     
     Vector<Integer> num1 = new Vector<>();
     Vector<Integer> num2 = new Vector<>();
-    Vector<Integer> result = new Vector<>();
     Integer base;
 
 
@@ -12,6 +11,13 @@ public class ClassOperator {
     private Vector<Integer> num2Aux = new Vector<>();
     private int cociente;
     private int residuo;
+
+    //Constructor
+    public ClassOperator(Vector<Integer> num1, Vector<Integer> num2, Integer base){
+        this.num1 = num1;
+        this.num2 = num2;
+        this.base = base;
+    };
 
 
     // Metodo para hacer que los vectores auxiliares guarden los datos con la misma cantidad de items
@@ -83,9 +89,36 @@ public class ClassOperator {
         return vectorAux;
     }
     
+    //Encuentra el complemento del sustraendo
+    private void complemento(){
+        Vector<Integer> complementoAux = new Vector<>();
+        Vector<Integer> temporalNum1 = new Vector<>();
+        Vector<Integer> addComplemento = new Vector<>();
+        addComplemento.add(1); //Vector para sumarle al complemento el 1
+
+        temporalNum1 = num1;
+        // Se encuentra el complemento
+        for (int i = 0; i < num1Aux.size(); i++) {
+            int varComplemento = (base - 1) - num2Aux.get(i);
+            complementoAux.add(varComplemento);
+        }
+
+        // se asignan los valres para sumarle 1 al complemento y mandar el metodo sumar
+        num1 = complementoAux;
+        num2 = addComplemento;
+        num2 = suma(); // se le suma al complemento 1
+        num1 = temporalNum1;
+    }
+
     //Metodo para realizar la suma de 2 numeros que llegan como vectores
     public Vector<Integer> suma(){
 
+        Vector<Integer> result = new Vector<>();
+
+        num1Aux.removeAllElements();
+        num2Aux.removeAllElements();
+        cociente = 0;
+        residuo = 0;
         igualarArreglos();
         int idenxResult = num1Aux.size();
         Integer total = 0;
@@ -108,5 +141,13 @@ public class ClassOperator {
         result = flipVector(result);
 
         return result;
+    }
+
+    //Metodo para realizar la resta de 2 numeros que llegan como vectores usando el complementos
+    public Vector<Integer> restar(){
+        igualarArreglos();
+        complemento();
+        // num1 = 2131; num2 4421, base = 5, num1aux = vacio, num2aux = vacio, resultado = vacio, ociente = 0, residio = 0;
+        return suma();
     }
 }

@@ -18,7 +18,7 @@ class index{
 
         //instacias -> objetos
         ClassConvert instaciaCovert = new ClassConvert();
-        ClassOperator instanciaOperar = new ClassOperator();
+        //ClassOperator instanciaOperar = new ClassOperator();
         Scanner catchConsol = new Scanner(System.in);
         //#endregion
 
@@ -26,7 +26,7 @@ class index{
         while (flagOption) { // Ciclo para asegurar quie elija un valor correcto
 
             //opciones a operar
-            System.out.println("Ingrese la operacion que decea realizar");
+            System.out.println("Ingrese la operacion que desea realizar");
             System.out.println("1- Convertir de una base a decimal");
             System.out.println("2- Convertir de decimal a una base");
             System.out.println("3- Suma entre 2 numeros de la misma base");
@@ -51,7 +51,11 @@ class index{
                 break;
 
             case 3:
-                message = "Ingrese la base sobre la que quiere operar";
+                message = "Ingrese la base sobre la que quiere Sumar";
+                break;
+            
+            case 4:
+                message = "Ingrese la base sobre la que quiere restar";
                 break;
 
             default:
@@ -142,15 +146,52 @@ class index{
                     sms31 = "El valor no pertenece a la base Ingrese un valor valido";
                 }
 
-                instanciaOperar.num1 = value1;
-                instanciaOperar.num2 = value2;
-                instanciaOperar.base = base;
-                Vector<Integer> vectorSuma = instanciaOperar.suma();
+                ClassOperator instanciaSuma = new ClassOperator(value1, value2, base);
+                Vector<Integer> vectorSuma = instanciaSuma.suma();
                 String resultSuma = "";
                 for (Integer value : vectorSuma) {
                     resultSuma = resultSuma + value;
                 }
                 System.out.println("El resultado de la suma es " + resultSuma);
+
+                break;
+
+            case 4:// Caso para restar 2 numeros
+
+                boolean flag41 = true;
+                String sms41 = "Ingrese el minuendo";
+                
+                while (flag41){
+                    System.out.println(sms41);
+                    catchValue1 = catchConsol.next();
+                    value1 = convertValueArray(catchValue1);
+                    flag41 = validationBase(base, value1);
+                    sms41 = "El valor no pertenece a la base Ingrese de nuevo el minuendo";
+                }
+
+                flag41 = true;
+                sms41 = "Ingrese el sustraendo";
+                
+                while (flag41){
+                    System.out.println(sms41);
+                    catchValue2 = catchConsol.next();
+                    value2 = convertValueArray(catchValue2);
+                    flag41 = validationBase(base, value2);
+                    sms41 = "El valor no pertenece a la base Ingrese de nuevo el sustraendo";
+                }
+
+                ClassOperator instanciaResta = new ClassOperator(value1, value2, base);
+                Vector<Integer> vectorResta = instanciaResta.restar();
+
+                String resultResta = "";
+                for (Integer value : vectorResta) {
+                    resultResta = resultResta + value;
+                }
+                System.out.println("El resultado de la suma es " + resultResta);
+
+                break;
+
+            case 5:// no hace nada
 
                 break;
         
