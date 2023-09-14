@@ -189,31 +189,48 @@ class index{
 
             case 4:// Caso para restar 2 numeros
 
-                boolean flag41 = true;
-                String sms41 = "Ingrese el minuendo";
-                
-                while (flag41){
-                    System.out.println(sms41);
-                    catchValue1 = catchConsol.next();
-                    if(validacionLetras(catchValue1)){
-                        value1 = convertValueArray(catchValue1);
-                        flag41 = validationBase(base, value1);
-                        sms41 = "El valor no pertenece a la base Ingrese de nuevo el minuendo";
-                    } else sms41 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el minuendo";
-                    
-                }
+                Integer flagMinuendo = 0;
+                Integer flagsutraendo = 1;
+                while(flagsutraendo > flagMinuendo){
 
-                flag41 = true;
-                sms41 = "Ingrese el sustraendo";
-                
-                while (flag41){
-                    System.out.println(sms41);
-                    catchValue2 = catchConsol.next();
-                    if(validacionLetras(catchValue2)){
-                        value2 = convertValueArray(catchValue2);
-                        flag41 = validationBase(base, value2);
-                        sms41 = "El valor no pertenece a la base Ingrese de nuevo el sustraendo";
-                    } else sms41 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el sustraendo";
+                    boolean flag41 = true;
+                    String sms41 = "Ingrese el minuendo";
+                    
+                    while (flag41){
+                        System.out.println(sms41);
+                        catchValue1 = catchConsol.next();
+                        if(validacionLetras(catchValue1)){
+                            value1 = convertValueArray(catchValue1);
+                            flag41 = validationBase(base, value1);
+                            sms41 = "El valor no pertenece a la base Ingrese de nuevo el minuendo";
+                        } else sms41 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el minuendo";
+                        
+                    }
+
+                    Long valueFlag1;
+                    instaciaCovert.vector = value1; //intToVector(value1);
+                    instaciaCovert.base = base;
+                    valueFlag1 = instaciaCovert.numToDEcimal();
+                    flagMinuendo = valueFlag1.intValue();
+    
+                    flag41 = true;
+                    sms41 = "Ingrese el sustraendo recuerde debe ser menor al minuendo o pedira de nuevo los datos";
+                    
+                    while (flag41){
+                        System.out.println(sms41);
+                        catchValue2 = catchConsol.next();
+                        if(validacionLetras(catchValue2)){
+                            value2 = convertValueArray(catchValue2);
+                            flag41 = validationBase(base, value2);
+                            sms41 = "El valor no pertenece a la base Ingrese de nuevo el sustraendo";
+                        } else sms41 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el sustraendo";
+                    }
+
+                    Long valueFlag2;
+                    instaciaCovert.vector = value2; //intToVector(value1);
+                    instaciaCovert.base = base;
+                    valueFlag2 = instaciaCovert.numToDEcimal();
+                    flagsutraendo = valueFlag2.intValue();
                 }
 
                 ClassOperator instanciaResta = new ClassOperator(value1, value2, base);
@@ -268,30 +285,48 @@ class index{
             
             case 6:// Caso para dividir 2 numeros
 
-                boolean flag61 = true;
-                String sms61 = "Ingrese el Dividendo";
-                
-                while (flag61){
-                    System.out.println(sms61);
-                    catchValue1 = catchConsol.next();
-                    if(validacionLetras(catchValue1)){
-                        value1 = convertValueArray(catchValue1);
-                        flag61 = validationBase(base, value1);
-                        sms61 = "El valor no pertenece a la base Ingrese de nuevo el Dividendo";
-                    } else sms61 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el Dividendo";
-                }
+                Integer flagDividendo = 0;
+                Integer flagDivisor = 1;
+                while(flagDivisor > flagDividendo){
 
-                flag61 = true;
-                sms61 = "Ingrese el Divisor";
-                
-                while (flag61){
-                    System.out.println(sms61);
-                    catchValue2 = catchConsol.next();
-                    if(validacionLetras(catchValue2)){
-                        value2 = convertValueArray(catchValue2);
-                        flag61 = validationBase(base, value2);
-                        sms61 = "El valor no pertenece a la base Ingrese de nuevo el Divisor";
-                    } else sms61 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el Divisor";
+                    boolean flag61 = true;
+                    String sms61 = "Ingrese el Dividendo";
+                    
+                    while (flag61){
+                        System.out.println(sms61);
+                        catchValue1 = catchConsol.next();
+                        if(validacionLetras(catchValue1)){
+                            value1 = convertValueArray(catchValue1);
+                            flag61 = validationBase(base, value1);
+                            sms61 = "El valor no pertenece a la base Ingrese de nuevo el Dividendo";
+                        } else sms61 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el Dividendo";
+                    }
+
+                    Long valueFlag3;
+                    instaciaCovert.vector = value1; //intToVector(value1);
+                    instaciaCovert.base = base;
+                    valueFlag3 = instaciaCovert.numToDEcimal();
+                    flagDividendo = valueFlag3.intValue();
+    
+                    flag61 = true;
+                    sms61 = "Ingrese el Divisor  recuerde debe ser menor al Dividendo o pedira de nuevo los datos";
+                    
+                    while (flag61){
+                        System.out.println(sms61);
+                        catchValue2 = catchConsol.next();
+                        if(validacionLetras(catchValue2)){
+                            value2 = convertValueArray(catchValue2);
+                            flag61 = validationBase(base, value2);
+                            sms61 = "El valor no pertenece a la base Ingrese de nuevo el Divisor";
+                        } else sms61 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el Divisor";
+                    }
+
+                    Long valueFlag4;
+                    instaciaCovert.vector = value2; //intToVector(value1);
+                    instaciaCovert.base = base;
+                    valueFlag4 = instaciaCovert.numToDEcimal();
+                    flagDivisor = valueFlag4.intValue();
+
                 }
 
                 ClassOperator instanciaDivision = new ClassOperator(value1, value2, base);
