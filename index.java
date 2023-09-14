@@ -236,6 +236,40 @@ class index{
             
             case 6:// Caso para dividir 2 numeros
 
+                boolean flag61 = true;
+                String sms61 = "Ingrese el Dividendo";
+                
+                while (flag61){
+                    System.out.println(sms61);
+                    catchValue1 = catchConsol.next();
+                    value1 = convertValueArray(catchValue1);
+                    flag61 = validationBase(base, value1);
+                    sms61 = "El valor no pertenece a la base Ingrese de nuevo el Dividendo";
+                }
+
+                flag61 = true;
+                sms61 = "Ingrese el Divisor";
+                
+                while (flag61){
+                    System.out.println(sms61);
+                    catchValue2 = catchConsol.next();
+                    value2 = convertValueArray(catchValue2);
+                    flag61 = validationBase(base, value2);
+                    sms61 = "El valor no pertenece a la base Ingrese de nuevo el Divisor";
+                }
+
+                ClassOperator instanciaDivision = new ClassOperator(value1, value2, base);
+                Vector<Integer> vectorDivicion = instanciaDivision.inputDividir();
+
+                instaciaCovert.base = base;
+                instaciaCovert.value = Long.valueOf(vectorDivicion.get(0));
+                String sDividendo = instaciaCovert.decimalToNum();
+                instaciaCovert.value = Long.valueOf(vectorDivicion.get(1));
+                String sResto = instaciaCovert.decimalToNum();
+                
+                System.out.println("El resultado de la division en base " + base + " es " + sDividendo + " con residuo " + sResto);
+                System.out.println("El resultado de la division en decimal es " + vectorDivicion.get(0) + " con residuo " + vectorDivicion.get(1));
+
                 break;
         
             default:

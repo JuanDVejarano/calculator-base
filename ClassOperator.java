@@ -21,7 +21,7 @@ public class ClassOperator {
     };
 
     //#region Metodos privados
-    
+
     // Metodo para hacer que los vectores auxiliares guarden los datos con la misma cantidad de items
     private void igualarArreglos(){
         int maxLength;
@@ -172,6 +172,7 @@ public class ClassOperator {
     public Vector<Integer> inputMultiplicacion(){
         Vector<Integer> resultadoProducto = new Vector<>();
         Long cantidad;
+        
         ClassConvert instanciaCovert = new ClassConvert();
 
         instanciaCovert.vector = num2;
@@ -192,6 +193,44 @@ public class ClassOperator {
     }
 
     // Metodo para dividir
+    public Vector<Integer> inputDividir(){
+        Vector<Integer> cocienteAndResto = new Vector<>();
+        Vector<Integer> vectorMinuendo = new Vector<>();
+
+
+
+        int contador = 0;
+        Long dividendoDecimal;
+        Long dividendoDivisor;
+
+        ClassConvert instanciaCovert = new ClassConvert();
+
+        instanciaCovert.vector = num1;
+        instanciaCovert.base = base;
+        dividendoDecimal = instanciaCovert.numToDEcimal();
+
+        instanciaCovert.vector = num2;
+        instanciaCovert.base = base;
+        dividendoDivisor = instanciaCovert.numToDEcimal();
+
+        while(dividendoDivisor <= dividendoDecimal){
+            vectorMinuendo = inputRestar();
+            num1 = vectorMinuendo;
+            instanciaCovert.vector = num1;
+            instanciaCovert.base = base;
+            dividendoDecimal = instanciaCovert.numToDEcimal();
+            contador ++;
+        }
+
+        
+
+        cocienteAndResto.add(contador);
+        cocienteAndResto.add(dividendoDecimal.intValue());
+
+        
+
+        return cocienteAndResto;
+    }
 
     //#endregion
 }
