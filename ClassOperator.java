@@ -145,9 +145,11 @@ public class ClassOperator {
 
     //Metodo para realizar la resta de 2 numeros que llegan como vectores usando el complementos
     public Vector<Integer> restar(){
+        Vector<Integer> vectorTemporal = new Vector<>();
         igualarArreglos();
         complemento();
-        // num1 = 2131; num2 4421, base = 5, num1aux = vacio, num2aux = vacio, resultado = vacio, ociente = 0, residio = 0;
-        return suma();
+        vectorTemporal = suma();
+        vectorTemporal.remove(0); //Quitamos el primer valor
+        return vectorTemporal;
     }
 }
