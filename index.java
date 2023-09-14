@@ -7,7 +7,7 @@ class index{
 
         //#region variables
         int option = 0;
-        int base = 10;
+        Integer base = 10;
         String catchValue1 = "";
         String catchValue2;
         Vector<Integer> value1 = new Vector<>();
@@ -30,13 +30,17 @@ class index{
             System.out.println("1- Convertir de una base a decimal");
             System.out.println("2- Convertir de decimal a una base");
             System.out.println("3- Suma entre 2 numeros de la misma base");
-            System.out.println("4- Resta entre 2 numeros de la misma base");
+            System.out.println("4- Resta entre 2 numeros de la misma base (No permite numeros mayores en el sustranedo que en el minuendo)");
             System.out.println("5- Multiplicacion entre 2 numeros de la misma base");
-            System.out.println("6- Division entre 2 numeros de la misma base");
-            option = catchConsol.nextInt(); // captura de opcion de operacion
-            if (option >= 1 && option <= 6) { // validacion para que seleccion una opcion entre 1 y 6
+            System.out.println("6- Division entre 2 numeros de la misma base (No permite numeros mayores en el divisor que en el dividendo)");
+            String validacionOption = catchConsol.next();
+            if(validacionLetras(validacionOption)){
+                option = Integer.parseInt(validacionOption);
+                if (option >= 1 && option <= 6) { // validacion para que seleccion una opcion entre 1 y 6
                 flagOption = false;
+                }
             }
+            
         }
         //#endregion
 
@@ -79,11 +83,22 @@ class index{
             System.out.println(message);
             System.out.println("minimo base 2");
             System.out.println("maximo base 10");
-            base = catchConsol.nextInt(); // captura valor de la base
-            
-            if (base >= 2 && base <= 10) { // validacion para seleccionar una base entre 2 y 10
-                flagBase = false;
+            String baseValidation = String.valueOf(base);
+            baseValidation = catchConsol.next(); // captura valor de la base
+            if(validacionLetras(baseValidation)){
+                base = Integer.parseInt(baseValidation);
+                if (base >= 2 && base <= 10) { // validacion para seleccionar una base entre 2 y 10
+                    flagBase = false;
+                }
+                else{
+                    message = "Digite una base entre 2 y 10";
+                }
             }
+            else{
+                message = "Digite la base no debe tener letras";
+            }
+            
+            
         }
         //#endregion
         
@@ -91,15 +106,17 @@ class index{
         // switch segun la operacion elegida
         switch (option) {
             case 1: // Caso de una base a decimal
-                String sms = "Ingrese el valor";
+                String sms = "Ingrese el valor a convertir";
                 boolean flag = true;
                 
                 while (flag){
                     System.out.println(sms);
                     catchValue1 = catchConsol.next();
-                    value1 = convertValueArray(catchValue1);
-                    flag = validationBase(base, value1);
-                    sms = "El valor no pertenece a la base Ingrese un valor valido";
+                    if(validacionLetras(catchValue1)){
+                        value1 = convertValueArray(catchValue1);
+                        flag = validationBase(base, value1);
+                        sms = "El valor no pertenece a la base Ingrese el valor a convertir";
+                    } else sms = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el valor a convertir";
                 }
                 
                 // Manejo del objeto
@@ -117,9 +134,11 @@ class index{
                 while (flag2){
                     System.out.println(sms2);
                     catchValue1 = catchConsol.next();
-                    value1 = convertValueArray(catchValue1);
-                    flag2 = validationBase(10, value1);
-                    sms2 = "El valor no pertenece a la base Ingrese un valor valido";
+                    if(validacionLetras(catchValue1)){
+                        value1 = convertValueArray(catchValue1);
+                        flag2 = validationBase(10, value1);
+                        sms2 = "El valor no pertenece a la base Ingrese el valor a convertir";
+                    } else sms2 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el valor a convertir";
                 }
 
                 instaciaCovert.value = Long.parseLong(catchValue1);
@@ -133,25 +152,29 @@ class index{
             case 3: // Caso para sumar 2 numeros
 
                 boolean flag31 = true;
-                String sms31 = "Ingrese el primer valor";
+                String sms31 = "Ingrese el primer sumando";
                 
                 while (flag31){
                     System.out.println(sms31);
                     catchValue1 = catchConsol.next();
-                    value1 = convertValueArray(catchValue1);
-                    flag31 = validationBase(base, value1);
-                    sms31 = "El valor no pertenece a la base Ingrese un valor valido";
+                    if(validacionLetras(catchValue1)){
+                        value1 = convertValueArray(catchValue1);
+                        flag31 = validationBase(base, value1);
+                        sms31 = "El valor no pertenece a la base Ingrese un valor valido";
+                    } else sms31 = "El valor no pertenece a la base (contiene letras) Ingrese un valor valido";
                 }
 
                 flag31 = true;
-                sms31 = "Ingrese el segundo valor";
+                sms31 = "Ingrese el segundo sumando";
                 
                 while (flag31){
                     System.out.println(sms31);
                     catchValue2 = catchConsol.next();
-                    value2 = convertValueArray(catchValue2);
-                    flag31 = validationBase(base, value2);
-                    sms31 = "El valor no pertenece a la base Ingrese un valor valido";
+                    if(validacionLetras(catchValue2)){
+                        value2 = convertValueArray(catchValue2);
+                        flag31 = validationBase(base, value2);
+                        sms31 = "El valor no pertenece a la base Ingrese un valor valido";
+                    } else sms31 = "El valor no pertenece a la base (contiene letras) Ingrese un valor valido";
                 }
 
                 ClassOperator instanciaSuma = new ClassOperator(value1, value2, base);
@@ -172,9 +195,12 @@ class index{
                 while (flag41){
                     System.out.println(sms41);
                     catchValue1 = catchConsol.next();
-                    value1 = convertValueArray(catchValue1);
-                    flag41 = validationBase(base, value1);
-                    sms41 = "El valor no pertenece a la base Ingrese de nuevo el minuendo";
+                    if(validacionLetras(catchValue1)){
+                        value1 = convertValueArray(catchValue1);
+                        flag41 = validationBase(base, value1);
+                        sms41 = "El valor no pertenece a la base Ingrese de nuevo el minuendo";
+                    } else sms41 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el minuendo";
+                    
                 }
 
                 flag41 = true;
@@ -183,9 +209,11 @@ class index{
                 while (flag41){
                     System.out.println(sms41);
                     catchValue2 = catchConsol.next();
-                    value2 = convertValueArray(catchValue2);
-                    flag41 = validationBase(base, value2);
-                    sms41 = "El valor no pertenece a la base Ingrese de nuevo el sustraendo";
+                    if(validacionLetras(catchValue2)){
+                        value2 = convertValueArray(catchValue2);
+                        flag41 = validationBase(base, value2);
+                        sms41 = "El valor no pertenece a la base Ingrese de nuevo el sustraendo";
+                    } else sms41 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el sustraendo";
                 }
 
                 ClassOperator instanciaResta = new ClassOperator(value1, value2, base);
@@ -206,9 +234,11 @@ class index{
                 while (flag51){
                     System.out.println(sms51);
                     catchValue1 = catchConsol.next();
-                    value1 = convertValueArray(catchValue1);
-                    flag51 = validationBase(base, value1);
-                    sms51 = "El valor no pertenece a la base Ingrese de nuevo el multiplicando";
+                    if(validacionLetras(catchValue1)){
+                        value1 = convertValueArray(catchValue1);
+                        flag51 = validationBase(base, value1);
+                        sms51 = "El valor no pertenece a la base Ingrese de nuevo el multiplicando";
+                    } else sms51 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el multiplicando";
                 }
 
                 flag51 = true;
@@ -217,9 +247,11 @@ class index{
                 while (flag51){
                     System.out.println(sms51);
                     catchValue2 = catchConsol.next();
-                    value2 = convertValueArray(catchValue2);
-                    flag51 = validationBase(base, value2);
-                    sms51 = "El valor no pertenece a la base Ingrese de nuevo el multiplicador";
+                    if(validacionLetras(catchValue2)){
+                        value2 = convertValueArray(catchValue2);
+                        flag51 = validationBase(base, value2);
+                        sms51 = "El valor no pertenece a la base Ingrese de nuevo el multiplicador";
+                    } else sms51 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el multiplicador";
                 }
 
                 ClassOperator instanciaProducto = new ClassOperator(value1, value2, base);
@@ -242,9 +274,11 @@ class index{
                 while (flag61){
                     System.out.println(sms61);
                     catchValue1 = catchConsol.next();
-                    value1 = convertValueArray(catchValue1);
-                    flag61 = validationBase(base, value1);
-                    sms61 = "El valor no pertenece a la base Ingrese de nuevo el Dividendo";
+                    if(validacionLetras(catchValue1)){
+                        value1 = convertValueArray(catchValue1);
+                        flag61 = validationBase(base, value1);
+                        sms61 = "El valor no pertenece a la base Ingrese de nuevo el Dividendo";
+                    } else sms61 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el Dividendo";
                 }
 
                 flag61 = true;
@@ -253,9 +287,11 @@ class index{
                 while (flag61){
                     System.out.println(sms61);
                     catchValue2 = catchConsol.next();
-                    value2 = convertValueArray(catchValue2);
-                    flag61 = validationBase(base, value2);
-                    sms61 = "El valor no pertenece a la base Ingrese de nuevo el Divisor";
+                    if(validacionLetras(catchValue2)){
+                        value2 = convertValueArray(catchValue2);
+                        flag61 = validationBase(base, value2);
+                        sms61 = "El valor no pertenece a la base Ingrese de nuevo el Divisor";
+                    } else sms61 = "El valor no pertenece a la base (contiene letras) Ingrese de nuevo el Divisor";
                 }
 
                 ClassOperator instanciaDivision = new ClassOperator(value1, value2, base);
@@ -302,22 +338,13 @@ class index{
         return newVector;
     }
 
-    // metodo pone cada valor en un arreglo
-    /*static Vector<Integer> intToVector(int value){ // metodo para guardar valores del numero en un vector
-
-        Vector<Integer> vector = new Vector<>();
-        Vector<Integer> vectorAux = new Vector<>();
-        
-        while (value > 0) { // guardar digito por digito en el vector auxiliar
-            vectorAux.add(value % 10);
-            value = value / 10;
+    //Validacion de letras
+    static boolean validacionLetras(String valueString){
+        for (int i = 0; i < valueString.length(); i++) {
+           if(valueString.charAt(i) == '0' || valueString.charAt(i) == '1' || valueString.charAt(i) == '2' || valueString.charAt(i) == '3'  || valueString.charAt(i) == '4' || valueString.charAt(i) == '5' || valueString.charAt(i) == '6' || valueString.charAt(i) == '7' || valueString.charAt(i) == '8' || valueString.charAt(i) == '9');
+           else return false;
         }
-        
-        // se organizan los digitos del vector en orden
-        for (int i = (vectorAux.size() -1); -1 < i; i--) {
-            vector.add(vectorAux.get(i));
-        }
-        return vector;
-    }*/
+        return true;
+    }
     //#endregion
 }
