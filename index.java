@@ -31,10 +31,10 @@ class index{
             System.out.println("2- Convertir de decimal a una base");
             System.out.println("3- Suma entre 2 numeros de la misma base");
             System.out.println("4- Resta entre 2 numeros de la misma base");
-            System.out.println("5- Multiplicacion entre 2 numeros de la misma base");
+            System.out.println("5- (ESTA OPCION AUN NO ESTA DISPONIBLE) Multiplicacion entre 2 numeros de la misma base");
             System.out.println("6- Division entre 2 numeros de la misma base");
             option = catchConsol.nextInt(); // captura de opcion de operacion
-            if (option >= 1 && option <= 6) { // validacion para que seleccion una opcion entre 1 y 6
+            if ((option >= 1 && option <= 6) && option != 5) { // validacion para que seleccion una opcion entre 1 y 6
                 flagOption = false;
             }
         }
@@ -54,12 +54,16 @@ class index{
                 message = "Ingrese la base sobre la que quiere Sumar";
                 break;
             
+            case 5:
+                message = "Ingrese la base sobre la que quiere multiplicar";
+                break;
+
             case 4:
-                message = "Ingrese la base sobre la que quiere restar";
+                message = "Ingrese la base sobre la que quiere dividir";
                 break;
 
             default:
-                message = "Opcion no valida";
+                message = "Opcion no valida";               
                 break;
         }
         //#endregion
@@ -147,7 +151,7 @@ class index{
                 }
 
                 ClassOperator instanciaSuma = new ClassOperator(value1, value2, base);
-                Vector<Integer> vectorSuma = instanciaSuma.suma();
+                Vector<Integer> vectorSuma = instanciaSuma.inputSuma();
                 String resultSuma = "";
                 for (Integer value : vectorSuma) {
                     resultSuma = resultSuma + value;
@@ -181,7 +185,7 @@ class index{
                 }
 
                 ClassOperator instanciaResta = new ClassOperator(value1, value2, base);
-                Vector<Integer> vectorResta = instanciaResta.restar();
+                Vector<Integer> vectorResta = instanciaResta.inputRestar();
 
                 String resultResta = "";
                 for (Integer value : vectorResta) {
@@ -191,7 +195,11 @@ class index{
 
                 break;
 
-            case 5:// no hace nada
+            case 7:// Caso para multiplicar 2 numeros
+
+                break;
+            
+            case 6:// Caso para dividir 2 numeros
 
                 break;
         
