@@ -31,10 +31,10 @@ class index{
             System.out.println("2- Convertir de decimal a una base");
             System.out.println("3- Suma entre 2 numeros de la misma base");
             System.out.println("4- Resta entre 2 numeros de la misma base");
-            System.out.println("5- (ESTA OPCION AUN NO ESTA DISPONIBLE) Multiplicacion entre 2 numeros de la misma base");
+            System.out.println("5- Multiplicacion entre 2 numeros de la misma base");
             System.out.println("6- Division entre 2 numeros de la misma base");
             option = catchConsol.nextInt(); // captura de opcion de operacion
-            if ((option >= 1 && option <= 6) && option != 5) { // validacion para que seleccion una opcion entre 1 y 6
+            if (option >= 1 && option <= 6) { // validacion para que seleccion una opcion entre 1 y 6
                 flagOption = false;
             }
         }
@@ -53,12 +53,16 @@ class index{
             case 3:
                 message = "Ingrese la base sobre la que quiere Sumar";
                 break;
+
+            case 4:
+                message = "Ingrese la base sobre la que quiere restar";
+                break;
             
             case 5:
                 message = "Ingrese la base sobre la que quiere multiplicar";
                 break;
 
-            case 4:
+            case 6:
                 message = "Ingrese la base sobre la que quiere dividir";
                 break;
 
@@ -195,7 +199,38 @@ class index{
 
                 break;
 
-            case 7:// Caso para multiplicar 2 numeros
+            case 5:// Caso para multiplicar 2 numeros
+                boolean flag51 = true;
+                String sms51 = "Ingrese el multiplicando";
+                
+                while (flag51){
+                    System.out.println(sms51);
+                    catchValue1 = catchConsol.next();
+                    value1 = convertValueArray(catchValue1);
+                    flag51 = validationBase(base, value1);
+                    sms51 = "El valor no pertenece a la base Ingrese de nuevo el multiplicando";
+                }
+
+                flag51 = true;
+                sms51 = "Ingrese el multiplicador";
+                
+                while (flag51){
+                    System.out.println(sms51);
+                    catchValue2 = catchConsol.next();
+                    value2 = convertValueArray(catchValue2);
+                    flag51 = validationBase(base, value2);
+                    sms51 = "El valor no pertenece a la base Ingrese de nuevo el multiplicador";
+                }
+
+                ClassOperator instanciaProducto = new ClassOperator(value1, value2, base);
+                Vector<Integer> vectorProducto = instanciaProducto.inputMultiplicacion();
+
+                String resultProducto = "";
+                for (Integer value : vectorProducto) {
+                    resultProducto = resultProducto + value;
+                }
+                System.out.println("El resultado de la multiplicacion es " + resultProducto);
+
 
                 break;
             

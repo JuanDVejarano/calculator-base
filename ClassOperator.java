@@ -20,6 +20,8 @@ public class ClassOperator {
         this.base = base;
     };
 
+    //#region Metodos privados
+    
     // Metodo para hacer que los vectores auxiliares guarden los datos con la misma cantidad de items
     private void igualarArreglos(){
         int maxLength;
@@ -54,8 +56,6 @@ public class ClassOperator {
                 num2Aux.add(num2.get(i));
             }
         }
-        num1 = num1Aux;
-        num2 = num2Aux;
     } 
 
     //Metodo que me permite conseguir el residuo y cociente de una division
@@ -146,22 +146,52 @@ public class ClassOperator {
         return result;
     }
 
+    //#endregion
+
+    //#region Metodos publicos
+
     //Metodo publico para la suma
     public Vector<Integer> inputSuma(){
-        igualarArreglos();
-        return suma();
+        igualarArreglos(); // se igual los arreglos para que tengan el mismo numero de items
+        return suma();  // Se suman los numeros dentro de los vectores auxiliares
     }
     
     //Metodo para realizar la resta de 2 numeros que llegan como vectores usando el complementos
     public Vector<Integer> inputRestar(){
         Vector<Integer> vectorTemporal = new Vector<>();
-        igualarArreglos();
-        complemento();
-        num1Aux = num1;
-        num2Aux = vectorcomplemento;
-        vectorTemporal = suma();
+        igualarArreglos(); // Se igualn los arreglos para que tengan la misma cantidad de digitos complentandolos con 0
+        complemento(); // se Encuentra el complemento y se guarda en una atrivuto del objeto
+        num1Aux = num1; // se asigna al objeto el primer valor que se va a sumar
+        num2Aux = vectorcomplemento; // se asigna al objeto el segundo valor(Complemento) que se va a sumar
+        vectorTemporal = suma(); // se suma el primer valor con el complemento
         vectorTemporal.remove(0); //Quitamos el primer valor
         return vectorTemporal;
     }
 
+    // Metodo para la multiplicacion
+    public Vector<Integer> inputMultiplicacion(){
+        Vector<Integer> resultadoProducto = new Vector<>();
+        Long cantidad;
+        ClassConvert instanciaCovert = new ClassConvert();
+
+        instanciaCovert.vector = num2;
+        instanciaCovert.base = base;
+        cantidad = instanciaCovert.numToDEcimal();
+
+        num2 = num1;
+        igualarArreglos();
+        
+        for (int i = 1; i < cantidad; i++) {
+            resultadoProducto = suma();
+            num2 = resultadoProducto;
+            igualarArreglos();
+        }
+
+        
+        return resultadoProducto;
+    }
+
+    // Metodo para dividir
+
+    //#endregion
 }
