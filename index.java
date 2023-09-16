@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.Vector;
 
+//@author JuanDVejarano
+
 class index{
     // Los datos de los integrantes esta en el archivio README.md
     public static void main(String[] args) {

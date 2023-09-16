@@ -1,13 +1,9 @@
 # Calculadora de bases
 
-Programa Creado en java para hacer calculos de diferentes bases permite hacer transformaciones de una base an decimal y de decimal a una base, tambien permite hacer operaciones como sumar restar multiplicar y restar en diferentes bases
+Este programa en Java permite realizar cálculos en diferentes bases numéricas. Puedes utilizarlo para transformar números de una base a decimal y viceversa, así como para realizar operaciones de suma, resta, multiplicación y división en diversas bases.
 
-- la suma se realiza de manera normal teniendo en cuenta la base
-- la resta se realiza usando el complemento de la base
-- la multiplicacion se realiza con varias sumas
-- la multiplicacion se realiza usando varias restas
-
-## Integrantes
-
-- Juan David Vejarano Martinez
-- Brayan Camilo Miranda Hernandez
+- Las bases permitidas están en el rango de 2 a 10.
+- La suma se realiza de manera convencional, teniendo en cuenta la base seleccionada.
+- La resta se realiza utilizando el complemento de la base.
+- La multiplicación se lleva a cabo mediante sumas repetidas.
+- La división se realiza mediante restas repetidas.
